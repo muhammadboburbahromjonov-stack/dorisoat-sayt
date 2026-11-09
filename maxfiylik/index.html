@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dorisoat — maxfiylik siyosati</title>
+<!-- Bu sahifa o'zi yetarli (tashqi fayl yo'q): ilova ham uni ichida ko'rsatadi (app/scripts/build.mjs ko'chiradi).
+     [ ... ] bilan belgilangan joylarni e'lon qilishdan oldin to'ldiring. Matn yuridik maslahat emas: yuristga ko'rsating. -->
+<style>
+:root{--ink:#1d2350;--mut:#5d6690;--bg:#f6f7fb;--card:#fff;--line:#e3e6f2;--acc:#5b2bd6}
+@media (prefers-color-scheme:dark){:root{--ink:#e8eaf6;--mut:#a3a9c9;--bg:#12142a;--card:#1b1e3a;--line:#2c3058;--acc:#a98bff}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+nav{display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}
+nav button{font:inherit;font-size:15px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+nav button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+article{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px 22px 18px}
+h1{font-size:28px;line-height:1.2;margin:16px 0 4px}h2{font-size:20px;margin:26px 0 6px}
+.date{color:var(--mut);margin:0 0 14px}.box{background:var(--bg);border-radius:14px;padding:4px 16px;margin:12px 0}
+ul{padding-left:22px}li{margin:4px 0}.fill{background:#ffe58a;color:#1d2350;border-radius:4px;padding:0 4px}
+</style></head>
+<body><main>
+<nav><button data-l="uz">O‘zbekcha</button><button data-l="ru">Русский</button></nav>
+
+<article lang="uz">
+<h1>Maxfiylik siyosati</h1>
+<p class="date">Oxirgi yangilanish: 2026-yil 9-noyabr</p>
+<div class="box"><p><b>Qisqacha</b></p><ul>
+<li>Akkauntsiz Dorisoat barcha ma’lumotni faqat telefoningizda saqlaydi. Biz uni ko‘rmaymiz va olmaymiz.</li>
+<li>Retsept rasmini o‘qish telefonning o‘zida, internetsiz bajariladi. Rasm hech qayerga yuborilmaydi.</li>
+<li>Akkaunt ixtiyoriy. Uni ochsangiz, zaxira va yaqinlaringiz uchun bugungi holat O‘zbekiston hududidagi serverda saqlanadi.</li>
+<li>Ilovada reklama, reklama kuzatuvchilari va Google Analytics kabi tahlil vositalari yo‘q. Ma’lumotlaringiz sotilmaydi.</li>
+</ul></div>
+
+<h2>1. Kim javobgar</h2>
+<p>Dorisoat ilovasi va serverining egasi (shaxsga doir ma’lumotlar egasi va operatori): <span class="fill">[F.I.Sh. yoki tashkilot nomi]</span>, <span class="fill">[manzil]</span>. Murojaat uchun: <span class="fill">[email]</span>.</p>
+
+<h2>2. Telefoningizda saqlanadigan ma’lumotlar</h2>
+<p>Ilovaga kiritganlaringiz telefon xotirasida saqlanadi: dorilar, qabul vaqtlari va tarixi; bosim, qand kabi o‘lchovlar va o‘zingizni his qilish yozuvlari; shifokor qabullari va savollaringiz; tahlil natijalari rasmlari; favqulodda tibbiy karta (ism, tug‘ilgan sana, qon guruhi, kasalliklar, allergiya, yaqin kishining telefoni); sozlamalar.</p>
+<p>Akkaunt ochmasangiz, bu ma’lumotlar bizga yuborilmaydi. Ilovani o‘chirsangiz yoki Sozlamalardagi «Barcha ma’lumotlarni o‘chirish» tugmasini bossangiz, ular telefondan o‘chadi. «Faylga saqlash» bilan olingan zaxira fayli faqat sizda qoladi: uni kimga berishni o‘zingiz hal qilasiz.</p>
+
+<h2>3. Akkaunt ochsangiz (ixtiyoriy)</h2>
+<p>Akkaunt faqat siz rozilik belgisini qo‘yganingizdan keyin ochiladi. Serverda quyidagilar saqlanadi:</p>
+<ul>
+<li><b>Kirish uchun:</b> email yoki telefon raqami. Parol faqat qaytarib bo‘lmaydigan shifrlangan ko‘rinishda (xesh) saqlanadi.</li>
+<li><b>Profil:</b> ism (kiritsangiz), ilova tili, rozilik vaqti, ilova versiyasi va oxirgi kirish vaqti. Oxirgi kirish vaqti faqat «necha kishi faol» degan umumiy hisob uchun kerak.</li>
+<li><b>Zaxira:</b> ilovadagi ma’lumotlaringiz nusxasi (tahlil rasmlarisiz), telefonni almashtirganda tiklash uchun.</li>
+<li><b>Bugungi holat:</b> bugungi dorilar nomi, vaqti va ichilgan-ichilmagani. Uni faqat siz taklif kodi bergan yaqinlaringiz ko‘radi.</li>
+<li><b>Yaqinlar bog‘lanishi:</b> kim kimni kuzatishi va ular ko‘rsatgan ismlar.</li>
+</ul>
+<p>Telefon raqami bilan kirishda tasdiqlash kodi SMS orqali keladi: buning uchun raqamingiz va kod matni SMS xizmati provayderiga (Eskiz.uz, O‘zbekiston) uzatiladi. Email bilan parolni tiklashda xat pochta xizmati orqali yuboriladi.</p>
+
+<h2>4. Akkauntsiz ishlaydigan onlayn imkoniyatlar</h2>
+<ul>
+<li><b>Hamkor dorixona kodi.</b> Kodni kiritsangiz, server faqat «shu dorixona orqali bitta ilova ulandi» degan yozuvni (dorixona va sana) saqlaydi. Siz haqingizda hech narsa saqlanmaydi.</li>
+<li><b>«Qayerda bor».</b> Serverga faqat qidirilayotgan dori nomi yuboriladi. U akkauntingiz bilan bog‘lanmaydi va javob berilgach saqlanmaydi.</li>
+<li><b>Ovoz bilan kiritish (🎤).</b> Telefoningizdagi nutqni aniqlash xizmatidan (odatda Google) foydalanadi. Dorisoat ovozni yozib olmaydi va saqlamaydi; bu xizmatning o‘z maxfiylik shartlari amal qiladi.</li>
+<li><b>Telegram bot.</b> Ilovadagi bot havolasi Telegram’ni ochadi; bot alohida xizmat bo‘lib, unda Telegram shartlari ham amal qiladi.</li>
+</ul>
+
+<h2>5. Ma’lumotlar qayerda va qanday saqlanadi</h2>
+<p>Server O‘zbekiston Respublikasi hududida joylashgan. Telefon va server o‘rtasidagi aloqa shifrlangan (HTTPS). Har bir yozuvni faqat uning egasi va u ruxsat bergan yaqinlari o‘qiy oladi. Admin panelda faqat umumiy raqamlar ko‘rinadi: hech bir foydalanuvchining dorisi, kasalligi yoki ismi ko‘rinmaydi.</p>
+<p>Server jurnallariga IP-manzillar yozilmaydi; texnik jurnallar 7 kundan keyin o‘chiriladi. Ma’lumotlar bazasining zaxira nusxasi har kuni olinadi va 14 kun saqlanadi.</p>
+
+<h2>6. Ma’lumotlardan nima uchun foydalanamiz</h2>
+<ul>
+<li>eslatmalar, jadval va hisobotlarni ko‘rsatish (telefonda);</li>
+<li>akkaunt orqali zaxira va tiklash;</li>
+<li>siz ruxsat bergan yaqinlarga bugungi holatni ko‘rsatish;</li>
+<li>dorini hamkor dorixonalardan topish;</li>
+<li>umumiy statistika: faqat raqamlar (akkauntlar soni, faollar soni).</li>
+</ul>
+<p>Ma’lumotlaringizni reklama uchun ishlatmaymiz, sotmaymiz va reklama tarmoqlariga bermaymiz.</p>
+
+<h2>7. Kimga beriladi</h2>
+<p>Faqat quyidagilarga: siz o‘zingiz ruxsat bergan yaqinlaringiz (bugungi holat); SMS va pochta xizmatlari (faqat kodni yoki xatni yetkazish uchun); serverni joylashtiruvchi O‘zbekistondagi data-markaz (texnik saqlash). Qonunda belgilangan hollarda vakolatli davlat organlariga, qonunda belgilangan tartibda.</p>
+<p>Hamkor dorixonalar siz haqingizda hech qanday ma’lumot olmaydi: ular faqat o‘z kodi orqali nechta ilova ulanganini ko‘radi.</p>
+
+<h2>8. Sog‘liq haqidagi ma’lumotlar</h2>
+<p>Dorilar va sog‘liq haqidagi ma’lumotlar maxsus toifadagi shaxsga doir ma’lumotdir. Shuning uchun ular serverga faqat siz akkaunt ochishda alohida rozilik berganingizdan keyin yuboriladi.</p>
+
+<h2>9. Qancha saqlanadi</h2>
+<p>Telefondagi ma’lumotlar o‘zingiz o‘chirguningizcha saqlanadi. Serverdagi ma’lumotlar akkauntni o‘chirguningizcha saqlanadi. Akkauntni o‘chirsangiz (Sozlamalar → Akkaunt → «Akkauntni butunlay o‘chirish»), zaxira, bugungi holat, yaqinlar bog‘lanishi va taklif kodlari darhol o‘chiriladi, kunlik zaxira nusxalaridan esa 14 kun ichida butunlay yo‘qoladi. SMS tasdiqlash kodlari qisqa muddat amal qiladi.</p>
+
+<h2>10. Huquqlaringiz</h2>
+<p>O‘zbekiston Respublikasining «Shaxsga doir ma’lumotlar to‘g‘risida»gi Qonuniga muvofiq siz quyidagi huquqlarga egasiz:</p>
+<ul>
+<li>ma’lumotlaringiz qanday ishlanayotganini bilish;</li>
+<li>ularni ko‘rish va nusxasini olish (Sozlamalar → «Faylga saqlash»);</li>
+<li>ularni tuzatish va o‘chirish;</li>
+<li>rozilikni istalgan vaqtda qaytarib olish: buning uchun akkauntni o‘chiring.</li>
+</ul>
+<p>Murojaat uchun: <span class="fill">[email]</span>.</p>
+
+<h2>11. Bolalar</h2>
+<p>Ilova kattalar uchun mo‘ljallangan. 18 yoshga to‘lmaganlar akkauntni ota-onasi yoki qonuniy vakili roziligi bilan ochadi.</p>
+
+<h2>12. Telefon ruxsatlari</h2>
+<ul>
+<li><b>Bildirishnomalar va aniq vaqtli signal</b> (signal ruxsatini o‘zingiz berasiz): dorini o‘z vaqtida eslatish uchun.</li>
+<li><b>Telefon yonganda va ilova yangilanganda ishga tushish:</b> eslatmalarni qayta qo‘yish uchun.</li>
+<li><b>Mikrofon:</b> faqat 🎤 tugmasini bosganingizda, ovoz bilan kiritish uchun.</li>
+<li><b>Kamera va fayllar:</b> faqat siz retsept yoki tahlil rasmini olganingizda yoki tanlaganingizda.</li>
+</ul>
+
+<h2>13. Cookie va kuzatuv</h2>
+<p>Ilovada cookie, reklama identifikatori va tahlil vositalari (Google Analytics, Firebase, Facebook va boshqalar) ishlatilmaydi. Dorixona kabineti va admin panel veb sahifalari faqat kirish holatini brauzer xotirasida saqlaydi: bu kirish uchun zarur va kuzatuv emas.</p>
+
+<h2>14. Xavfsizlik</h2>
+<p>Parollar xesh ko‘rinishida saqlanadi, aloqa shifrlangan, ma’lumotlarga kirish egasi bilan cheklangan. Hech bir tizim to‘liq himoyalangan emas: agar ma’lumotlar sizib chiqsa, qonunda belgilangan tartibda sizni va vakolatli organni xabardor qilamiz.</p>
+
+<h2>15. O‘zgarishlar</h2>
+<p>Siyosat o‘zgarsa, yangi sana bilan shu sahifada e’lon qilamiz. Muhim o‘zgarishlarni ilovada ham bildiramiz.</p>
+</article>
+
+<article lang="ru" hidden>
+<h1>Политика конфиденциальности</h1>
+<p class="date">Последнее обновление: 9 ноября 2026 г.</p>
+<div class="box"><p><b>Коротко</b></p><ul>
+<li>Без аккаунта Dorisoat хранит все данные только на вашем телефоне. Мы их не видим и не получаем.</li>
+<li>Распознавание фото рецепта выполняется на самом телефоне, без интернета. Фото никуда не отправляется.</li>
+<li>Аккаунт необязателен. Если вы его создадите, резервная копия и сегодняшний статус для близких хранятся на сервере на территории Узбекистана.</li>
+<li>В приложении нет рекламы, рекламных трекеров и аналитики вроде Google Analytics. Ваши данные не продаются.</li>
+</ul></div>
+
+<h2>1. Кто отвечает</h2>
+<p>Владелец приложения и сервера Dorisoat (собственник и оператор персональных данных): <span class="fill">[Ф.И.О. или название организации]</span>, <span class="fill">[адрес]</span>. Для обращений: <span class="fill">[email]</span>.</p>
+
+<h2>2. Данные, которые хранятся на телефоне</h2>
+<p>Всё, что вы вводите, хранится в памяти телефона: лекарства, время и история приёма; давление, сахар и другие измерения, записи о самочувствии; визиты к врачу и вопросы; фото анализов; экстренная медкарта (имя, дата рождения, группа крови, заболевания, аллергия, телефон близкого человека); настройки.</p>
+<p>Если вы не создаёте аккаунт, эти данные нам не передаются. Если удалить приложение или нажать в настройках «Удалить все данные», они удаляются с телефона. Файл резервной копии, сохранённый кнопкой «Сохранить в файл», остаётся только у вас: кому его передать, решаете вы.</p>
+
+<h2>3. Если вы создаёте аккаунт (необязательно)</h2>
+<p>Аккаунт создаётся только после того, как вы отметите согласие. На сервере хранится:</p>
+<ul>
+<li><b>Для входа:</b> email или номер телефона. Пароль хранится только в необратимо зашифрованном виде (хеш).</li>
+<li><b>Профиль:</b> имя (если указали), язык, время согласия, версия приложения и время последнего входа. Время последнего входа нужно только для общего подсчёта «сколько человек активны».</li>
+<li><b>Резервная копия:</b> копия данных приложения (без фото анализов), чтобы восстановить их при смене телефона.</li>
+<li><b>Сегодняшний статус:</b> названия сегодняшних лекарств, время и отметка о приёме. Его видят только близкие, которым вы дали код приглашения.</li>
+<li><b>Связи с близкими:</b> кто за кем наблюдает и указанные ими имена.</li>
+</ul>
+<p>При входе по номеру телефона код подтверждения приходит по SMS: для этого номер и текст кода передаются SMS-провайдеру (Eskiz.uz, Узбекистан). При восстановлении пароля по email письмо отправляется через почтовый сервис.</p>
+
+<h2>4. Онлайн-функции без аккаунта</h2>
+<ul>
+<li><b>Код аптеки-партнёра.</b> Если вы вводите код, сервер сохраняет только запись «через эту аптеку подключено одно приложение» (аптека и дата). О вас ничего не сохраняется.</li>
+<li><b>«Где купить».</b> На сервер отправляется только название искомого лекарства. Оно не связывается с вашим аккаунтом и не сохраняется после ответа.</li>
+<li><b>Голосовой ввод (🎤).</b> Использует службу распознавания речи на вашем телефоне (обычно Google). Dorisoat не записывает и не хранит голос; действуют правила конфиденциальности этой службы.</li>
+<li><b>Telegram-бот.</b> Ссылка на бота открывает Telegram; бот — отдельный сервис, в нём действуют и правила Telegram.</li>
+</ul>
+
+<h2>5. Где и как хранятся данные</h2>
+<p>Сервер находится на территории Республики Узбекистан. Связь между телефоном и сервером зашифрована (HTTPS). Каждую запись может прочитать только её владелец и близкие, которым он дал доступ. В панели администратора видны только общие цифры: ни лекарства, ни заболевания, ни имена пользователей не отображаются.</p>
+<p>IP-адреса в журналы сервера не записываются; технические журналы удаляются через 7 дней. Резервная копия базы данных создаётся ежедневно и хранится 14 дней.</p>
+
+<h2>6. Для чего мы используем данные</h2>
+<ul>
+<li>показ напоминаний, расписания и отчётов (на телефоне);</li>
+<li>резервное копирование и восстановление через аккаунт;</li>
+<li>показ сегодняшнего статуса близким, которым вы дали доступ;</li>
+<li>поиск лекарства в аптеках-партнёрах;</li>
+<li>общая статистика: только числа (количество аккаунтов, активных пользователей).</li>
+</ul>
+<p>Мы не используем ваши данные для рекламы, не продаём их и не передаём рекламным сетям.</p>
+
+<h2>7. Кому передаются данные</h2>
+<p>Только: близким, которым вы сами дали доступ (сегодняшний статус); SMS- и почтовым сервисам (только для доставки кода или письма); дата-центру в Узбекистане, где размещён сервер (техническое хранение). В случаях, предусмотренных законом, — уполномоченным государственным органам в установленном законом порядке.</p>
+<p>Аптеки-партнёры не получают о вас никаких данных: они видят только, сколько приложений подключено по их коду.</p>
+
+<h2>8. Данные о здоровье</h2>
+<p>Сведения о лекарствах и здоровье относятся к специальной категории персональных данных. Поэтому они отправляются на сервер только после вашего отдельного согласия при создании аккаунта.</p>
+
+<h2>9. Сколько хранятся данные</h2>
+<p>Данные на телефоне хранятся, пока вы их не удалите. Данные на сервере хранятся, пока вы не удалите аккаунт. При удалении аккаунта (Настройки → Аккаунт → «Удалить аккаунт полностью») резервная копия, сегодняшний статус, связи с близкими и коды приглашений удаляются сразу, а из ежедневных резервных копий базы — полностью в течение 14 дней. SMS-коды подтверждения действуют короткое время.</p>
+
+<h2>10. Ваши права</h2>
+<p>В соответствии с Законом Республики Узбекистан «О персональных данных» вы вправе:</p>
+<ul>
+<li>знать, как обрабатываются ваши данные;</li>
+<li>просматривать их и получать копию (Настройки → «Сохранить в файл»);</li>
+<li>исправлять и удалять их;</li>
+<li>в любой момент отозвать согласие: для этого удалите аккаунт.</li>
+</ul>
+<p>Для обращений: <span class="fill">[email]</span>.</p>
+
+<h2>11. Дети</h2>
+<p>Приложение предназначено для взрослых. Лица младше 18 лет создают аккаунт с согласия родителей или законных представителей.</p>
+
+<h2>12. Разрешения телефона</h2>
+<ul>
+<li><b>Уведомления и точные будильники</b> (разрешение на будильники даёте вы сами): чтобы напомнить о лекарстве вовремя.</li>
+<li><b>Запуск после включения телефона и обновления приложения:</b> чтобы заново поставить напоминания.</li>
+<li><b>Микрофон:</b> только когда вы нажимаете 🎤, для голосового ввода.</li>
+<li><b>Камера и файлы:</b> только когда вы сами снимаете или выбираете фото рецепта или анализа.</li>
+</ul>
+
+<h2>13. Cookie и отслеживание</h2>
+<p>В приложении не используются cookie, рекламный идентификатор и средства аналитики (Google Analytics, Firebase, Facebook и другие). Веб-страницы кабинета аптеки и панели администратора хранят в памяти браузера только состояние входа: это необходимо для входа и не является отслеживанием.</p>
+
+<h2>14. Безопасность</h2>
+<p>Пароли хранятся в виде хеша, связь зашифрована, доступ к данным ограничен владельцем. Ни одна система не защищена полностью: если произойдёт утечка данных, мы уведомим вас и уполномоченный орган в порядке, установленном законом.</p>
+
+<h2>15. Изменения</h2>
+<p>Если политика изменится, мы опубликуем её на этой странице с новой датой. О важных изменениях сообщим и в приложении.</p>
+</article>
+</main>
+<script>
+(function () {
+  var arts = document.querySelectorAll("article"), btns = document.querySelectorAll("nav button");
+  function show(l) {
+    arts.forEach(function (a) { a.hidden = a.lang !== l; });
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.l === l)); });
+    document.documentElement.lang = l;
+  }
+  btns.forEach(function (b) { b.onclick = function () { show(b.dataset.l); history.replaceState(null, "", "#" + b.dataset.l); }; });
+  var h = location.hash.slice(1);
+  show(h === "ru" || h === "uz" ? h : (navigator.language || "").indexOf("ru") === 0 ? "ru" : "uz");
+})();
+</script>
+</body></html>

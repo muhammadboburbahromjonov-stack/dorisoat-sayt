@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dorisoat</title>
+<meta name="description" content="Dorisoat shifokor yozgan dorilarni o‘z vaqtida eslatadi. Retseptni rasmdan o‘qiydi, internetsiz ishlaydi, bepul va reklamasiz.">
+<link rel="icon" href="logo.png"><meta name="theme-color" content="#4a57e0">
+<meta property="og:title" content="Dorisoat — dori vaqtini eslatuvchi ilova"><meta property="og:description" content="Retseptni rasmga oling — har bir dori o‘z vaqtida eslatiladi. Bepul, reklamasiz.">
+<meta property="og:image" content="img/today.webp">
+<!-- Kuzatuv, cookie va tashqi resurs yo'q: shriftlar ham shu serverda (fonts/, SIL OFL). Matn o'zbekcha HTML'da, ruscha pastdagi RU lug'atida. -->
+<style>
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(fonts/onest-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:400;font-display:swap;src:url(fonts/onest-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(fonts/onest-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:600;font-display:swap;src:url(fonts/onest-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:800;font-display:swap;src:url(fonts/onest-latin-800-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-weight:800;font-display:swap;src:url(fonts/onest-cyrillic-800-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Unbounded;font-weight:700;font-display:swap;src:url(fonts/unbounded-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Unbounded;font-weight:700;font-display:swap;src:url(fonts/unbounded-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+
+/* Layout: telefon uchun avval — qisqa hero + ilova ekrani ustida "eslatma" kartasi, keyin 3 ta asosiy foyda, suriladigan ekranlar, qolgani yig'ma */
+:root{
+  --bg:#f4f5fb; --surface:#fff; --ink:#171b45; --mut:#5b628c; --line:#e3e6f3;
+  --accent:#ff7a1a; --brand:#4a57e0; --brand-ink:#3b34c9; --tint:#eceafe; --ok:#14935a;
+  --hero:linear-gradient(160deg,#35c9e4 0%,#4a7fe0 38%,#5b2bd6 100%);
+  --deep:#10133a;
+  --f-display:Unbounded,"Arial Black",system-ui,sans-serif; --f-body:Onest,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1230;--surface:#1a1e44;--ink:#eef0ff;--mut:#a9aed3;--line:#2b3064;--brand-ink:#b8a8ff;--tint:#24285a;--ok:#4ade9a;--deep:#090b24;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1230;--surface:#1a1e44;--ink:#eef0ff;--mut:#a9aed3;--line:#2b3064;--brand-ink:#b8a8ff;--tint:#24285a;--ok:#4ade9a;--deep:#090b24;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 17px/1.5 var(--f-body);color:var(--ink);background:var(--bg)}
+img{max-width:100%;display:block}a{color:var(--brand-ink)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--f-display);font-weight:700;letter-spacing:-.02em;text-wrap:balance;margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* menyu */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#3f6fe0}
+.bar{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 19px var(--f-display)}
+.logo img{width:34px;height:34px;border-radius:10px}.logo span{color:#ffc06a}
+.lang{margin-left:auto;display:flex;background:rgba(255,255,255,.16);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;color:#fff;font:600 14px var(--f-body);padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed=true]{background:#fff;color:#2e2a9e}
+
+/* hero */
+.hero{background:var(--hero);color:#fff;padding-top:calc(env(safe-area-inset-top,0px) + 84px);overflow:hidden;position:relative}
+.hero .wrap{display:grid;gap:28px}
+.hero h1{font-size:clamp(30px,8.4vw,56px);line-height:1.08}
+.hero h1 em{font-style:normal;color:#ffd08a}
+.lead{font-size:18px;line-height:1.5;margin:14px 0 22px;opacity:.94;max-width:30em}
+.cta{display:flex;flex-direction:column;gap:10px;max-width:420px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 24px;border-radius:16px;font:700 17px var(--f-body);text-decoration:none;border:0}
+.btn.go{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(120,40,0,.6)}
+.btn.soft{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn.wait{background:transparent;color:#fff;border:1px dashed rgba(255,255,255,.55);font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.pills li{background:rgba(255,255,255,.15);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
+.stage{position:relative;justify-self:center;width:min(300px,82vw);margin-top:6px}
+.device{border-radius:36px 36px 0 0;background:#0d1035;padding:10px 10px 0;box-shadow:0 30px 60px -24px rgba(5,5,40,.7)}
+.device img{border-radius:27px 27px 0 0;width:100%;height:auto;aspect-ratio:570/700;object-fit:cover;object-position:top}
+.ping{position:absolute;left:-14px;right:-14px;top:22%;background:rgba(255,255,255,.97);color:#171b45;border-radius:18px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;box-shadow:0 18px 40px -14px rgba(10,10,60,.55);animation:drop .7s cubic-bezier(.2,.8,.2,1) .3s both}
+.ping img{width:30px;height:30px;border-radius:8px;grid-row:span 2}
+.ping b{font-size:15px}.ping small{color:#5b628c;font-size:13px}
+.ping .acts{grid-column:1/-1;display:flex;gap:8px;margin-top:6px}
+.ping .acts span{flex:1;text-align:center;border-radius:10px;padding:8px 6px;font-size:13px;font-weight:700;background:#eef0fb;color:#3b34c9}
+.ping .acts span:first-child{background:#14935a;color:#fff}
+@keyframes drop{from{transform:translateY(-14px) scale(.97)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.ping{animation:none}html{scroll-behavior:auto}}
+
+/* bo'limlar */
+section{padding-block:56px}
+.kicker{font:600 13px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 8px}
+h2{font-size:clamp(24px,6.4vw,38px);line-height:1.15;margin-bottom:22px}
+.three{display:grid;gap:14px}
+.big{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;grid-template-columns:52px 1fr;gap:4px 14px;align-items:start}
+.big .ico{grid-row:span 2;width:52px;height:52px;border-radius:15px;background:var(--tint);display:grid;place-items:center;color:var(--brand-ink)}
+.big .ico svg{width:28px;height:28px}
+.big h3{margin:2px 0 0;font-size:19px;font-weight:800}.big p{margin:0;color:var(--mut);font-size:16px}
+
+.reel{display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,250px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-inline:calc(-1 * max(18px,env(safe-area-inset-left,0px)));padding-inline:max(18px,env(safe-area-inset-left,0px));scrollbar-width:none}
+.reel::-webkit-scrollbar{display:none}
+.reel figure{margin:0;scroll-snap-align:center}
+.reel img{border-radius:22px;border:1px solid var(--line);box-shadow:0 14px 28px -18px rgba(20,20,80,.5);width:100%;height:auto}
+.reel figcaption{margin-top:10px;font-weight:700;text-align:center;font-size:15px}
+.hint{color:var(--mut);font-size:14px;margin:-8px 0 16px}
+
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.who b{display:block;font-size:16px;margin-bottom:2px}.who span{color:var(--mut);font-size:14px;line-height:1.4;display:block}
+
+.trust{background:var(--deep);color:#fff}
+.trust h2{color:#fff}.trust .kicker{color:#ffd08a}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px}
+.facts b{display:block;font:700 22px var(--f-display);color:#ffd08a;font-variant-numeric:tabular-nums}
+.facts span{font-size:14px;color:#c9cdf2;line-height:1.4;display:block;margin-top:4px}
+.trust p.more{margin:18px 0 0}.trust p.more a{color:#fff}
+
+.all{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:0 20px;margin-top:8px}
+.all summary{cursor:pointer;font-weight:800;font-size:17px;padding:18px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.all summary::-webkit-details-marker{display:none}
+.all summary::after{content:"+";font:700 24px var(--f-body);color:var(--brand-ink)}
+.all[open] summary::after{content:"–"}
+.groups{display:grid;gap:18px;padding-bottom:20px}
+.groups h3{margin:0 0 6px;font-size:16px;font-weight:800}
+.groups ul{margin:0;padding-left:18px;color:var(--mut);font-size:15px}.groups li{margin:3px 0}
+
+.safe{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:16px;padding:16px 18px;font-size:15px;color:var(--mut)}
+.safe b{color:var(--ink)}
+
+.pharm{background:var(--tint);border-radius:26px;padding:24px}
+.pharm p{color:var(--mut);margin:0 0 16px}
+.pharm ul{margin:0 0 20px;padding:0;list-style:none;display:grid;gap:8px}
+.pharm li{display:flex;gap:10px;font-size:15px}.pharm li::before{content:"✓";color:var(--ok);font-weight:800}
+.pharm .btn{background:var(--brand);color:#fff;max-width:340px}
+
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--brand-ink);font-weight:800}
+.faq details[open] summary::after{content:"–"}.faq p{margin:0 0 14px;color:var(--mut);font-size:15px}
+
+.final{background:var(--hero);color:#fff;border-radius:28px;padding:28px 22px;display:grid;gap:16px}
+.final h2{margin:0;color:#fff}.final p{margin:0;opacity:.92}
+footer{background:var(--deep);color:#aeb3dc;padding-block:34px calc(34px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0}footer a{color:#fff;text-decoration:none}
+
+@media (min-width:860px){
+  .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:end}.hero .copy{padding-bottom:56px}
+  .cta{flex-direction:row;max-width:none}.btn{flex:0 0 auto}
+  .three{grid-template-columns:repeat(3,1fr)}.big{grid-template-columns:1fr}.big .ico{grid-row:auto}
+  .reel{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin-inline:0;padding-inline:0}.hint{display:none}
+  .who{grid-template-columns:repeat(4,1fr)}.facts{grid-template-columns:repeat(4,1fr)}
+  .groups{grid-template-columns:repeat(3,1fr);gap:24px}
+  .pharm{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:36px}
+  .final{grid-template-columns:1fr auto;align-items:center;padding:36px}
+  section{padding-block:76px}
+}
+</style></head>
+<body>
+<div class="bar"><div class="wrap">
+  <a class="logo" href="#"><img src="logo.png" alt=""><b>Dori<span>soat</span></b></a>
+  <div class="lang" role="group" aria-label="Til"><button data-l="uz">UZ</button><button data-l="ru">RU</button></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="copy">
+    <h1 data-t="h1">Dori vaqtini <em>unutmang</em> — Dorisoat eslatadi</h1>
+    <p class="lead" data-t="lead">Retseptni rasmga oling. Har bir dori o‘z vaqtida eslatiladi, siz faqat «Ichdim» ni bosasiz.</p>
+    <div class="cta">
+      <a class="btn go" id="play" href="#" hidden>▶ Google Play</a>
+      <a class="btn go" id="apk" href="/Dorisoat.apk" data-t="apk">⬇ Bepul yuklab olish</a>
+      <span class="btn wait" id="play-soon" data-t="play_soon">Google Play’da — tez kunda</span>
+    </div>
+    <ul class="pills"><li data-t="t1">Bepul</li><li data-t="t2">Reklamasiz</li><li data-t="t3">Internetsiz</li><li data-t="t4">O‘zbek · Русский</li></ul>
+  </div>
+  <div class="stage">
+    <div class="device"><img src="img/today.webp" alt="" width="570" height="700"></div>
+    <div class="ping" aria-hidden="true"><img src="logo.png" alt=""><b data-t="n_t">⏰ Dori vaqti: 08:00</b><small data-t="n_b">Metformin 500 mg · 1 tabletka</small>
+      <div class="acts"><span data-t="n_a1">✅ Ichdim</span><span data-t="n_a2">⏰ 15 daqiqadan keyin</span></div></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="kicker" data-t="k1">Nega Dorisoat</p>
+  <h2 data-t="why_h">Uch narsa — va dori o‘tkazib yuborilmaydi</h2>
+  <div class="three">
+    <div class="big"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+      <h3 data-t="b1h">Retseptni rasmga oling</h3><p data-t="b1p">Ilova o‘zi o‘qiydi — telefonda, internetsiz. Yoki ovoz bilan ayting.</p></div>
+    <div class="big"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M5 3 2 6M19 3l3 3"/></svg></div>
+      <h3 data-t="b2h">Aynan vaqtida eslatadi</h3><p data-t="b2p">Budilnik kabi jiringlaydi. Belgilanmasa — 10 daqiqadan keyin yana.</p></div>
+    <div class="big"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c.6-3.5 2.8-5.5 5.5-5.5s4.9 2 5.5 5.5M14 15c2.6-.6 5.6.6 7 4.5"/></svg></div>
+      <h3 data-t="b3h">Yaqinlaringiz ko‘radi</h3><p data-t="b3p">Farzand ota-onasi dorisini ichganini uzoqdan ko‘radi — faqat rozilik bilan.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-block-start:0"><div class="wrap">
+  <p class="kicker" data-t="k2">Ilova ichida</p>
+  <h2 data-t="sh_h">Sodda. Katta yozuv. Tushunarli.</h2>
+  <p class="hint" data-t="hint">← Suring →</p>
+  <div class="reel">
+    <figure><img src="img/today.webp" alt="" loading="lazy" width="570" height="1170"><figcaption data-t="c1">Bugungi dorilar</figcaption></figure>
+    <figure><img src="img/report.webp" alt="" loading="lazy" width="570" height="1170"><figcaption data-t="c3">Hisobot va kalendar</figcaption></figure>
+    <figure><img src="img/doctor.webp" alt="" loading="lazy" width="570" height="1170"><figcaption data-t="c4">Shifokor uchun PDF</figcaption></figure>
+    <figure><img src="img/meds.webp" alt="" loading="lazy" width="570" height="1170"><figcaption data-t="c2">Dorilar ro‘yxati</figcaption></figure>
+  </div>
+</div></section>
+
+<section style="padding-block-start:0"><div class="wrap">
+  <p class="kicker" data-t="k3">Kimlar uchun</p>
+  <h2 data-t="who_h">Har bir oilaga</h2>
+  <div class="who">
+    <div><b data-t="w1h">Keksalar</b><span data-t="w1p">Katta tugmalar, ovoz bilan kiritish</span></div>
+    <div><b data-t="w2h">Farzandlar</b><span data-t="w2p">Ota-onaning dorisi nazoratda</span></div>
+    <div><b data-t="w3h">Onalar</b><span data-t="w3p">Bolaning dori kursi alohida</span></div>
+    <div><b data-t="w4h">Bosim, qand</b><span data-t="w4p">Kundalik va grafiklar</span></div>
+  </div>
+
+  <details class="all" id="hammasi"><summary data-t="all_s">Barcha imkoniyatlar</summary>
+    <div class="groups">
+      <div><h3 data-t="g1h">Dori qo‘shish</h3><ul data-t="g1"><li>Retsept rasmidan (internetsiz)</li><li>Qo‘lda yoki ovoz bilan</li><li>Reyestrdagi 6 695 ta dori nomi</li><li>Kurs muddati, «kerak bo‘lganda» dorilar</li><li>Bir telefonda bir necha kishi</li></ul></div>
+      <div><h3 data-t="g2h">Eslatmalar</h3><ul data-t="g2"><li>Aniq vaqtida, internetsiz</li><li>«Ichdim» va «15 daqiqadan keyin»</li><li>10 daqiqadan keyin takroriy eslatma</li><li>Ertalabki reja, ovoz tanlash</li><li>Fitnes-bilaguzukda tebranish</li></ul></div>
+      <div><h3 data-t="g3h">Dori haqida</h3><ul data-t="g3"><li>O‘zaro ta’sir ogohlantirishi</li><li>Ovqatdan oldin yoki keyin</li><li>Rasmiy yo‘riqnomadan qisqacha</li><li>Retseptli dorida nojo‘ya ta’sirlar</li><li>Davlat reyestridagi narx</li></ul></div>
+      <div><h3 data-t="g4h">Shifokorga</h3><ul data-t="g4"><li>PDF hisobot</li><li>Bosim, qand, harorat, vazn</li><li>Savollarim, analizlarim</li><li>Shifokor qabuli eslatmasi</li><li>Favqulodda tibbiy karta</li></ul></div>
+      <div><h3 data-t="g5h">Oila va zaxira</h3><ul data-t="g5"><li>Yaqinlar kuzatuvi (kod bilan)</li><li>Bulutda zaxira — O‘zbekistonda</li><li>Faylga zaxira</li><li>Email yoki telefon bilan kirish</li></ul></div>
+      <div><h3 data-t="g6h">Dorixonalar</h3><ul data-t="g6"><li>Hamkor dorixona kodi</li><li>«Qayerda bor» — narx va qoldiq</li><li>Jadvalni A4 ga chop etish</li><li>O‘zbek (lotin, kirill) va rus tili</li></ul></div>
+    </div>
+  </details>
+</div></section>
+
+<section class="trust"><div class="wrap">
+  <p class="kicker" data-t="k4">Ishonch</p>
+  <h2 data-t="tr_h">Ma’lumotingiz — faqat sizniki</h2>
+  <div class="facts">
+    <div><b>0</b><span data-t="tf1">reklama va kuzatuv</span></div>
+    <div><b>📱</b><span data-t="tf2">akkauntsiz hammasi telefonda</span></div>
+    <div><b>UZ</b><span data-t="tf3">server O‘zbekistonda</span></div>
+    <div><b>6 695</b><span data-t="tf4">dori nomi davlat reyestridan</span></div>
+  </div>
+  <p class="more"><a href="maxfiylik/" data-t="p_link">Maxfiylik siyosati →</a></p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="safe" data-t="warn"><b>Muhim:</b> Dorisoat faqat shifokor yozgan tartibni eslatadi — tashxis qo‘ymaydi va dori buyurmaydi. Dozani o‘zingiz o‘zgartirmang. Ahvol keskin yomonlashsa — <b>103</b>.</div>
+</div></section>
+
+<section style="padding-block-start:0"><div class="wrap">
+  <div class="pharm">
+    <div><p class="kicker" data-t="k5">Dorixonalar uchun</p><h2 data-t="ph_h">Bemoringiz qaytib keladi</h2>
+      <p data-t="ph_p">Ilovani o‘rnatib bering — bemor ekranida dorixonangiz nomi va telefoni turadi.</p></div>
+    <div><ul data-t="ph_l"><li>Qoldiq va narxni Exceldan yuklaysiz</li><li>QR-kodli plakat — bir bosishda</li><li>Oyma-oy statistika, bemor sirlari ko‘rinmaydi</li></ul>
+      <a class="btn" href="kabinet/" data-needs-server data-t="ph_btn">Dorixona kabineti</a>
+      <p id="ph-mail-line" style="margin:14px 0 0" hidden><span data-t="ph_mail">Hamkor bo‘lish:</span> <a class="mail" href="#"></a></p></div>
+  </div>
+</div></section>
+
+<section style="padding-block-start:0"><div class="wrap faq">
+  <p class="kicker" data-t="k6">Savollar</p>
+  <h2 data-t="q_h">Ko‘p so‘raladi</h2>
+  <details><summary data-t="q1">Pullikmi?</summary><p data-t="a1">Yo‘q. Bepul va reklamasiz.</p></details>
+  <details><summary data-t="q2">Internet kerakmi?</summary><p data-t="a2">Yo‘q. Eslatmalar internetsiz ishlaydi. Internet faqat zaxira, yaqinlar va «Qayerda bor» uchun.</p></details>
+  <details><summary data-t="q3">Ro‘yxatdan o‘tish shartmi?</summary><p data-t="a3">Yo‘q. Akkaunt faqat bulutdagi zaxira va farzandingiz kuzatishi uchun.</p></details>
+  <details><summary data-t="q4">Eslatma kelmasa-chi?</summary><p data-t="a4">Ilovadagi qizil ogohlantirishda «Hozir tuzatish» ni bosing, keyin «Eslatmani sinab ko‘rish» bilan tekshiring.</p></details>
+  <details><summary data-t="q5">iPhone uchun bormi?</summary><p data-t="a5">Hozircha faqat Android (7.0 va yangiroq).</p></details>
+</div></section>
+
+<section style="padding-block-start:0"><div class="wrap">
+  <div class="final"><div><h2 data-t="f_h">Bugundan boshlang</h2><p data-t="f_p">O‘rnatish — 1 daqiqa.</p></div>
+    <a class="btn go" id="apk2" href="/Dorisoat.apk" data-t="apk">⬇ Bepul yuklab olish</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="logo" href="#"><img src="logo.png" alt=""><b>Dori<span>soat</span></b></a>
+  <nav><a href="maxfiylik/" data-t="l1">Maxfiylik siyosati</a><a href="shartlar/" data-t="l2">Foydalanish shartlari</a><a href="ochirish/" data-needs-server data-t="l3">Akkauntni o‘chirish</a><a href="kabinet/" data-needs-server data-t="l4">Dorixona kabineti</a></nav>
+  <p id="mail-line" hidden>✉️ <a class="mail" href="#"></a></p>
+  <p style="margin:0">© <span id="year">2026</span> Dorisoat</p>
+</div></footer>
+
+<script src="config.js"></script>
+<script>
+const RU = {
+  h1: "Не забывайте о <em>лекарствах</em> — Dorisoat напомнит",
+  lead: "Сфотографируйте рецепт. О каждом лекарстве напомним вовремя, вам останется нажать «Принял(а)».",
+  apk: "⬇ Скачать бесплатно", play_soon: "В Google Play — скоро",
+  t1: "Бесплатно", t2: "Без рекламы", t3: "Без интернета", t4: "O‘zbek · Русский",
+  n_t: "⏰ Время лекарства: 08:00", n_b: "Метформин 500 мг · 1 таблетка", n_a1: "✅ Принял(а)", n_a2: "⏰ Через 15 минут",
+  k1: "Почему Dorisoat", why_h: "Три вещи — и ни одного пропуска",
+  b1h: "Сфотографируйте рецепт", b1p: "Приложение прочитает его само — на телефоне, без интернета. Или скажите голосом.",
+  b2h: "Напомнит точно вовремя", b2p: "Звонит как будильник. Не отметили — напомнит ещё раз через 10 минут.",
+  b3h: "Близкие видят", b3p: "Ребёнок видит издалека, принял ли родитель лекарство — только с согласия.",
+  k2: "Внутри приложения", sh_h: "Просто. Крупно. Понятно.", hint: "← Листайте →",
+  c1: "Лекарства на сегодня", c2: "Список лекарств", c3: "Отчёт и календарь", c4: "PDF для врача",
+  k3: "Для кого", who_h: "Для каждой семьи",
+  w1h: "Пожилым", w1p: "Крупные кнопки, голосовой ввод", w2h: "Детям", w2p: "Лекарства родителей под контролем",
+  w3h: "Мамам", w3p: "Курс лекарств ребёнка отдельно", w4h: "Давление, сахар", w4p: "Дневник и графики",
+  all_s: "Все возможности",
+  g1h: "Добавление", g1: "<li>С фото рецепта (без интернета)</li><li>Вручную или голосом</li><li>6 695 названий из госреестра</li><li>Длительность курса, «при необходимости»</li><li>Несколько человек на одном телефоне</li>",
+  g2h: "Напоминания", g2: "<li>Точно вовремя, без интернета</li><li>«Принял(а)» и «Через 15 минут»</li><li>Повтор через 10 минут</li><li>Утренний план, выбор звука</li><li>Вибрация на фитнес-браслете</li>",
+  g3h: "О лекарствах", g3: "<li>Предупреждения о взаимодействии</li><li>До или после еды</li><li>Кратко из официальной инструкции</li><li>Побочные действия рецептурных</li><li>Цена из госреестра</li>",
+  g4h: "Врачу", g4: "<li>PDF-отчёт</li><li>Давление, сахар, температура, вес</li><li>Мои вопросы, мои анализы</li><li>Напоминание о приёме у врача</li><li>Экстренная медкарта</li>",
+  g5h: "Семья и копия", g5: "<li>Наблюдение близких (по коду)</li><li>Облачная копия — в Узбекистане</li><li>Копия в файл</li><li>Вход по email или телефону</li>",
+  g6h: "Аптеки", g6: "<li>Код аптеки-партнёра</li><li>«Где купить» — цена и наличие</li><li>Печать расписания на A4</li><li>Узбекский (латиница, кириллица) и русский</li>",
+  k4: "Доверие", tr_h: "Ваши данные — только ваши",
+  tf1: "рекламы и слежки", tf2: "без аккаунта всё на телефоне", tf3: "сервер в Узбекистане", tf4: "названий из госреестра",
+  p_link: "Политика конфиденциальности →",
+  warn: "<b>Важно:</b> Dorisoat только напоминает схему, назначенную врачом, — не ставит диагноз и не назначает лекарства. Не меняйте дозу сами. При резком ухудшении — <b>103</b>.",
+  k5: "Аптекам", ph_h: "Покупатель вернётся к вам", ph_p: "Установите приложение — на экране покупателя будут название и телефон вашей аптеки.",
+  ph_l: "<li>Остатки и цены из Excel</li><li>Плакат с QR-кодом в один клик</li><li>Статистика по месяцам, без личных данных</li>",
+  ph_btn: "Кабинет аптеки", ph_mail: "Стать партнёром:",
+  k6: "Вопросы", q_h: "Часто спрашивают",
+  q1: "Это платно?", a1: "Нет. Бесплатно и без рекламы.",
+  q2: "Нужен ли интернет?", a2: "Нет. Напоминания работают без интернета. Он нужен только для копии, близких и «Где купить».",
+  q3: "Нужна ли регистрация?", a3: "Нет. Аккаунт нужен только для облачной копии и наблюдения ребёнка.",
+  q4: "Если напоминание не пришло?", a4: "Нажмите «Исправить сейчас» в красном предупреждении, затем проверьте кнопкой «Проверить напоминание».",
+  q5: "Есть ли для iPhone?", a5: "Пока только Android (7.0 и новее).",
+  f_h: "Начните сегодня", f_p: "Установка — 1 минута.",
+  l1: "Политика конфиденциальности", l2: "Условия использования", l3: "Удаление аккаунта", l4: "Кабинет аптеки",
+};
+const UZ = {};
+document.querySelectorAll("[data-t]").forEach((el) => { UZ[el.dataset.t] = el.innerHTML; });
+function setLang(l) {
+  const dict = l === "ru" ? RU : UZ;
+  document.querySelectorAll("[data-t]").forEach((el) => { if (dict[el.dataset.t] !== undefined) el.innerHTML = dict[el.dataset.t]; });
+  document.documentElement.lang = l;
+  document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.l === l)));
+  document.querySelectorAll('a[href*="maxfiylik/"],a[href*="shartlar/"],a[href*="ochirish/"]').forEach((a) => { a.hash = l; });
+  try { localStorage.setItem("dorisoat_lang", l); } catch (e) { /* */ }
+}
+document.querySelectorAll(".lang button").forEach((b) => { b.onclick = () => setLang(b.dataset.l); });
+let saved = null; try { saved = localStorage.getItem("dorisoat_lang"); } catch (e) { /* */ }
+setLang(location.hash === "#ru" ? "ru" : location.hash === "#uz" ? "uz" : saved || ((navigator.language || "").startsWith("ru") ? "ru" : "uz"));
+const C = window.DORISOAT || {};
+if (C.play) { const p = document.getElementById("play"); p.href = C.play; p.hidden = false; document.getElementById("play-soon").hidden = true; }
+if (C.apk) ["apk", "apk2"].forEach((id) => { document.getElementById(id).href = C.apk; });
+if (C.email) {
+  document.querySelectorAll("a.mail").forEach((m) => { m.href = "mailto:" + C.email; m.textContent = C.email; });
+  document.getElementById("mail-line").hidden = false; document.getElementById("ph-mail-line").hidden = false;
+}
+// server (PocketBase) hali ulanmagan bo'lsa (masalan, sayt Vercel'da), kabinet va o'chirish havolalari yashiriladi
+if (!C.server) document.querySelectorAll("[data-needs-server]").forEach((el) => { el.hidden = true; });
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body></html>
