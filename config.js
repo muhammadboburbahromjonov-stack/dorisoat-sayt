@@ -6,7 +6,7 @@
 window.DORISOAT = {
   apk: "/Dorisoat.apk",
   play: "",
-  email: "",
+  email: "dorisoat.app@gmail.com",
   // server — dorixona kabineti, akkauntni o'chirish va API shu domenda ishlayaptimi (VPS'dagi PocketBase).
   // Sayt Vercel'da turganda false; VPS'ga ko'chganda true qiling.
   server: false,
