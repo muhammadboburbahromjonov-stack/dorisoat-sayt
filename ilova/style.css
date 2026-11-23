@@ -14,7 +14,7 @@ html { background: #f3efff; }
 html, body { margin: 0; color: var(--ink); font: 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: linear-gradient(180deg, #eaf6fd 0%, #f1edff 60%, #f6f2ff 100%) fixed; min-height: 100%; }
 header { position: sticky; top: 0; z-index: 2; background: var(--brand); color: #fff; font-weight: 800; font-size: 24px;
-  padding: calc(12px + env(safe-area-inset-top)) 16px 14px; box-shadow: 0 6px 18px -8px rgba(60, 40, 160, .6);
+  padding: calc(12px + max(env(safe-area-inset-top, 0px), var(--sat, 0px))) 16px 14px; box-shadow: 0 6px 18px -8px rgba(60, 40, 160, .6);
   border-radius: 0 0 26px 26px; text-shadow: 0 2px 3px rgba(40, 20, 110, .35); }
 header span { color: #ffb04a; }
 header img { width: 36px; height: 36px; vertical-align: -9px; margin-right: 10px; border-radius: 10px;
@@ -112,7 +112,7 @@ input:disabled { background: #eceef6; }
 nav { position: fixed; bottom: 10px; left: 10px; right: 10px; max-width: 620px; margin: 0 auto; display: flex; gap: 4px; padding: 6px;
   background: rgba(255, 255, 255, .82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-radius: 999px; box-shadow: 0 14px 30px -12px rgba(52, 36, 140, .55), inset 0 1px 0 #fff;
-  margin-bottom: env(safe-area-inset-bottom); z-index: 3; }
+  margin-bottom: max(env(safe-area-inset-bottom, 0px), var(--sab, 0px)); z-index: 3; }
 nav button { flex: 1; border-radius: 999px; background: none; box-shadow: none; padding: 6px 2px; font-size: 11px; color: var(--muted);
   display: flex; flex-direction: column; align-items: center; gap: 1px; }
 nav button span { font-size: 21px; }
