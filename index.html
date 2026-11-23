@@ -53,6 +53,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 24px;border-radius:16px;font:700 17px var(--f-body);text-decoration:none;border:0}
 .btn.go{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(120,40,0,.6)}
 .btn.soft{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.ioshint{margin:12px 0 0;max-width:420px;font-size:14px;line-height:1.4;color:rgba(255,255,255,.85)}
+.cta2{display:flex;flex-wrap:wrap;gap:10px}.final .btn.soft{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
 .btn.wait{background:transparent;color:#fff;border:1px dashed rgba(255,255,255,.55);font-weight:600}
 .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
 .pills li{background:rgba(255,255,255,.15);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
@@ -151,7 +153,9 @@ footer nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0}footer a{colo
       <a class="btn go" id="play" href="#" hidden>▶ Google Play</a>
       <a class="btn go" id="apk" href="/Dorisoat.apk" data-t="apk">⬇ Bepul yuklab olish</a>
       <span class="btn wait" id="play-soon" data-t="play_soon">Google Play’da — tez kunda</span>
+      <a class="btn soft" id="ios" href="/ilova/" data-t="ios">🍎 iPhone uchun</a>
     </div>
+    <p class="ioshint" data-t="ios_h">iPhone: havolani Safari’da oching → «Ulashish» → «Bosh ekranga qo‘shish». Bu sinov ko‘rinishi.</p>
     <ul class="pills"><li data-t="t1">Bepul</li><li data-t="t2">Reklamasiz</li><li data-t="t3">Internetsiz</li><li data-t="t4">O‘zbek · Русский</li></ul>
   </div>
   <div class="stage">
@@ -243,12 +247,12 @@ footer nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0}footer a{colo
   <details><summary data-t="q2">Internet kerakmi?</summary><p data-t="a2">Yo‘q. Eslatmalar internetsiz ishlaydi. Internet faqat zaxira, yaqinlar va «Qayerda bor» uchun.</p></details>
   <details><summary data-t="q3">Ro‘yxatdan o‘tish shartmi?</summary><p data-t="a3">Yo‘q. Akkaunt faqat bulutdagi zaxira va farzandingiz kuzatishi uchun.</p></details>
   <details><summary data-t="q4">Eslatma kelmasa-chi?</summary><p data-t="a4">Ilovadagi qizil ogohlantirishda «Hozir tuzatish» ni bosing, keyin «Eslatmani sinab ko‘rish» bilan tekshiring.</p></details>
-  <details><summary data-t="q5">iPhone uchun bormi?</summary><p data-t="a5">Hozircha faqat Android (7.0 va yangiroq).</p></details>
+  <details><summary data-t="q5">iPhone uchun bormi?</summary><p data-t="a5">Alohida iPhone ilovasi hali yo‘q. Sinash uchun <a href="/ilova/">dorisoat.uz/ilova</a> sahifasini Safari’da oching va «Ulashish» → «Bosh ekranga qo‘shish» ni bosing. Bu sinov ko‘rinishi: eslatmalar to‘liq ishlamaydi. To‘liq ishlaydigan ilova — Android uchun (7.0 va yangiroq).</p></details>
 </div></section>
 
 <section style="padding-block-start:0"><div class="wrap">
   <div class="final"><div><h2 data-t="f_h">Bugundan boshlang</h2><p data-t="f_p">O‘rnatish — 1 daqiqa.</p></div>
-    <a class="btn go" id="apk2" href="/Dorisoat.apk" data-t="apk">⬇ Bepul yuklab olish</a></div>
+    <div class="cta2"><a class="btn go" id="apk2" href="/Dorisoat.apk" data-t="apk">⬇ Bepul yuklab olish</a><a class="btn soft" href="/ilova/" data-t="ios">🍎 iPhone uchun</a></div></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -263,7 +267,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin:14px 0}footer a{colo
 const RU = {
   h1: "Не забывайте о <em>лекарствах</em> — Dorisoat напомнит",
   lead: "Сфотографируйте рецепт. О каждом лекарстве напомним вовремя, вам останется нажать «Принял(а)».",
-  apk: "⬇ Скачать бесплатно", play_soon: "В Google Play — скоро",
+  apk: "⬇ Скачать бесплатно", play_soon: "В Google Play — скоро", ios: "🍎 Для iPhone",
+  ios_h: "iPhone: откройте ссылку в Safari → «Поделиться» → «На экран Домой». Это пробная версия.",
   t1: "Бесплатно", t2: "Без рекламы", t3: "Без интернета", t4: "O‘zbek · Русский",
   n_t: "⏰ Время лекарства: 08:00", n_b: "Утреннее лекарство · 1 шт.", n_a1: "✅ Принял(а)", n_a2: "⏰ Через 15 минут",
   k1: "Почему Dorisoat", why_h: "Три вещи — и ни одного пропуска",
@@ -294,7 +299,7 @@ const RU = {
   q2: "Нужен ли интернет?", a2: "Нет. Напоминания работают без интернета. Он нужен только для копии, близких и «Где купить».",
   q3: "Нужна ли регистрация?", a3: "Нет. Аккаунт нужен только для облачной копии и наблюдения ребёнка.",
   q4: "Если напоминание не пришло?", a4: "Нажмите «Исправить сейчас» в красном предупреждении, затем проверьте кнопкой «Проверить напоминание».",
-  q5: "Есть ли для iPhone?", a5: "Пока только Android (7.0 и новее).",
+  q5: "Есть ли для iPhone?", a5: "Отдельного приложения для iPhone пока нет. Для пробы откройте <a href=\"/ilova/\">dorisoat.uz/ilova</a> в Safari и нажмите «Поделиться» → «На экран Домой». Это пробная версия: напоминания работают не полностью. Полноценное приложение — для Android (7.0 и новее).",
   f_h: "Начните сегодня", f_p: "Установка — 1 минута.",
   l1: "Политика конфиденциальности", l2: "Условия использования", l3: "Удаление аккаунта", l4: "Кабинет аптеки",
 };
