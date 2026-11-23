@@ -444,3 +444,14 @@ html[data-theme="dark"] .medcard { background: #2a1d24; } html[data-theme="dark"
 .themes button { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 16px; background: var(--surface2); box-shadow: none; border: 1.5px solid transparent; font-weight: 700; text-align: left; }
 .themes button.on { border-color: var(--violet); background: var(--soft); }
 .themes i { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line); }
+
+/* Bo'limlar orasida yumshoq o'tish */
+@keyframes mv-tab { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes mv-push { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes mv-pop { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes mv-pill { from { transform: scale(.82); opacity: .5; } to { transform: none; opacity: 1; } }
+main.mv-tab { animation: mv-tab .24s cubic-bezier(.2, .8, .2, 1) both; }
+main.mv-push { animation: mv-push .26s cubic-bezier(.2, .8, .2, 1) both; }
+main.mv-pop { animation: mv-pop .26s cubic-bezier(.2, .8, .2, 1) both; }
+nav.mv-tab button.on { animation: mv-pill .28s cubic-bezier(.2, .9, .3, 1.2) both; }
+@media (prefers-reduced-motion: reduce) { main.mv-tab, main.mv-push, main.mv-pop, nav.mv-tab button.on { animation: none; } }
