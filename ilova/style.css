@@ -10,9 +10,14 @@
   --gloss: inset 0 2px 0 rgba(255, 255, 255, .85), inset 0 -3px 6px rgba(40, 50, 90, .12);
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { background: #f3efff; }
-html, body { margin: 0; color: var(--ink); font: 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(180deg, #eaf6fd 0%, #f1edff 60%, #f6f2ff 100%) fixed; min-height: 100%; }
+/* Fon: butun ekranni (notch va pastki chiziq ostini ham) qoplaydi. iOS Safari "background-attachment: fixed" ni qo'llamaydi,
+   shuning uchun gradient ekranga qotirilgan alohida qatlamda; Android WebView va iOS'da bir xil ishlaydi. */
+:root { color-scheme: light; }
+html { background: #f3efff; min-height: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, #eaf6fd 0%, #f1edff 60%, #f6f2ff 100%); }
+html, body { margin: 0; color: var(--ink); font: 18px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+body { min-height: 100vh; min-height: 100dvh; overscroll-behavior-y: none; background: transparent; }
 header { position: sticky; top: 0; z-index: 2; background: var(--brand); color: #fff; font-weight: 800; font-size: 24px;
   padding: max(12px, calc(max(env(safe-area-inset-top, 0px), var(--sat, 0px)) + 2px)) 16px 12px; box-shadow: 0 6px 18px -8px rgba(60, 40, 160, .6);
   border-radius: 0 0 26px 26px; text-shadow: 0 2px 3px rgba(40, 20, 110, .35); }
